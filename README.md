@@ -1,37 +1,118 @@
-## Welcome to GitHub Pages
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Money Printer</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hidden{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <div class="row">
+            <h1>Money Printer</h1>
+        </div>
+        <div class="row">
+            <h3>Cash:</h3>
+            <h3 id="cash"></h3>
+        </div>
+        <button id="click">Make Money</button>
+        <div class="row">
+            <h2>Business</h2>
+        </div>
+        <div class="row">
+            <p class="hidden"></p>
+        </div>
+        Printer Cost: $50
+        <button id="moneyPrinter">Money Printer</button>
+        <div class="row">
+            <h3>Printer Count:</h3>
+            <h3 id="printers"></h3>
+        </div>
+        <h2>Upgrades:</h2>
+        <div class="row">
+            Cost: $1000
+            <button id="double">Double Income</button>
+        </div>
+        <div class="row">
+            Cost: $500
+            <button id="twice">Double Efficiency</button>
+        </div>
+    </div>
+</div>
+<script>
+    let cashAmount = 0;
+    let increment = 1;
+    let printerAmount = 0;
+    let printerCost = 50;
+    let printerSpeed = 10000;
+    let speedCost = 500;
+    let increaseSpeed = 1/2;
+    let increaseCost = 1000;
+    let increaseCash = 2;
+    let income = increment;
+    const cash = document.getElementById('cash');
+    // const cashTag = document.getElementById('cashMoney');
+    const clickButton = document.getElementById('click');
+    const printerButton = document.getElementById('moneyPrinter');
+    const printerCount = document.getElementById('printers');
+    const error = document.querySelector('p');
+    const increaseButton = document.getElementById('double');
+    const increaseSpeedButton = document.getElementById('twice');
 
-You can use the [editor on GitHub](https://github.com/DJAwaits/DJAwaits.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+    clickButton.addEventListener('click', function(e){
+        cashAmount += increment;
+        cash.innerHTML = `$${cashAmount}`;
+    });
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+    printerButton.addEventListener('click', function(e){
+        if(cashAmount >= printerCost){
+            cashAmount -= printerCost;
+            cash.innerHTML = `$${cashAmount}`;
+            printerAmount += 1;
+            printerCount.innerHTML = `${printerAmount}`;
+            setInterval(() => {
+                document.getElementById("click").click();
+            }, printerSpeed);
+            error.classList.add('hidden');
+        } else{
+            error.classList.remove('hidden');
+            error.textContent = "You Don't Have Enough Money For A Money Printer!";
+            return;
+        }
+    });
 
-### Markdown
+    increaseButton.addEventListener('click', function(e){
+        if(cashAmount >= increaseCost){
+            cashAmount -= increaseCost;
+            cash.innerHTML = `$${cashAmount}`;
+            increment *= increaseCash;
+            increaseButton.classList.add('hidden');
+        } else {
+            error.classList.remove('hidden');
+            error.textContent = "You Don't Have Enough Money For Double Income!";
+            return;
+        }
+    });
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+    increaseSpeedButton.addEventListener('click', function(e){
+        if(cashAmount >= speedCost){
+            cashAmount -= speedCost;
+            cash.innerHTML = `$${cashAmount}`;
+            printerSpeed *= increaseSpeed;
+            increaseSpeedButton.classList.add('hidden');
+        } else {
+            error.classList.remove('hidden');
+            error.textContent = "You Don't Have Enough Money For Double Efficiency!";
+            return;
+        }
+    });
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/DJAwaits/DJAwaits.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+</script>
+</body>
+</html>
