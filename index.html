@@ -20,27 +20,28 @@
             <h3>Cash:</h3>
             <h3 id="cash">$0</h3>
         </div>
-        <button id="click">Make Money</button>
+        <button id="click"><img src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/64946/cash-clipart-md.png" height="50" width="60"><br>Make Money</button>
         <div class="row">
             <h2>Business</h2>
         </div>
         <div class="row">
             <p class="hidden"></p>
         </div>
-        Printer Cost: $50
-        <button id="moneyPrinter">Money Printer</button>
+        <h4>Printer Cost: $50</h4>
+        <br>
+        <button id="moneyPrinter"><img src="https://cdn3.iconfinder.com/data/icons/unigrid-phantom-finance-vol-2/60/014_100_money_print_printer_frs_lifehack_seigniorage_dollar-512.png" height="50" width="60"><br>Buy Printer</button>
         <div class="row">
-            <h3>Printer Count:</h3>
+            <h3>Money Printer Count:</h3>
             <h3 id="printers"></h3>
         </div>
         <h2>Upgrades:</h2>
         <div class="row">
-            Cost: $1000
-            <button id="double">Double Income</button>
+            <h4>Cost: $1000</h4>
+            <button id="double"><img src="https://threshers.org/wp-content/uploads/2020/02/double-my-money-icon1.png" height="50" width="60"><br>Double Income</button>
         </div>
         <div class="row">
-            Cost: $500
-            <button id="twice">Double Efficiency</button>
+            <h4>Cost: $500</h4>
+            <button id="twice"><img src="https://static.thenounproject.com/png/849840-200.png" height="50" width="60"><br>Double Efficiency</button>
         </div>
     </div>
 </div>
@@ -63,6 +64,7 @@
     const error = document.querySelector('p');
     const increaseButton = document.getElementById('double');
     const increaseSpeedButton = document.getElementById('twice');
+
 
     clickButton.addEventListener('click', function(e){
         cashAmount += increment;
