@@ -21,6 +21,7 @@
             <h3 id="cash">$0</h3>
         </div>
         <button id="click"><img src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/64946/cash-clipart-md.png" height="50" width="60"><br>Make Money</button>
+        <button id="printerClick" class="hidden"></button>
         <button id="standClick" class="hidden"></button>
         <div class="row">
             <h2>Business</h2>
@@ -30,57 +31,72 @@
         </div>
         <h4>Printer Cost: $50</h4>
         <br>
-        <button id="moneyPrinter"><img src="https://cdn3.iconfinder.com/data/icons/unigrid-phantom-finance-vol-2/60/014_100_money_print_printer_frs_lifehack_seigniorage_dollar-512.png" height="50" width="60"><br>Buy Printer</button>
+        <button id="printer"><img src="https://cdn3.iconfinder.com/data/icons/unigrid-phantom-finance-vol-2/60/014_100_money_print_printer_frs_lifehack_seigniorage_dollar-512.png" height="50" width="60"><br>Buy Printer</button>
         <div class="row">
             <h3>Money Printer Count:</h3>
-            <h3 id="printers"></h3>
+            <h3 id="printers">0</h3>
         </div>
         <h4>Lemonade Stand: $100</h4>
         <br>
         <button id="stand"><img src="https://static.vecteezy.com/system/resources/previews/001/201/307/non_2x/lemonade-stand-png.png" height="50" width="60"><br>Buy<br>Lemonade Stand</button>
         <div class="row">
             <h3>Lemonade Stand Count:</h3>
-            <h3 id="stands"></h3>
+            <h3 id="stands">0</h3>
         </div>
         <h2>Upgrades:</h2>
-        <div class="row">
-            <h4 id="doubleText">Cost: $1000</h4>
-            <button id="double"><img src="https://threshers.org/wp-content/uploads/2020/02/double-my-money-icon1.png" height="50" width="60"><br>Double Income</button>
-        </div>
-        <div class="row">
-            <h4 id="speedText">Cost: $500</h4>
-            <button id="twice"><img src="https://static.thenounproject.com/png/849840-200.png" height="50" width="60"><br>Double Efficiency</button>
-        </div>
+        <h3>Printer Upgrades</h3>
+        <h4 id="doublePrinter">Cost: $10,000</h4>
+        <button id="increasePrinterIncome"><img src="https://threshers.org/wp-content/uploads/2020/02/double-my-money-icon1.png" height="50" width="60"><br>Double Printer Income</button>
+        <h4 id="fasterPrinter">Cost: $1000</h4>
+        <button id="increasePrinterSpeed"><img src="https://uxwing.com/wp-content/themes/uxwing/download/07-web-app-development/speed.png" height="50" width="60"><br>Faster Printer</button>
+        <h3>Lemonade Stand Upgrade</h3>
+        <h4 id="doubleStand">Cost: $20,000</h4>
+        <button id="increaseStandIncome"><img src="https://threshers.org/wp-content/uploads/2020/02/double-my-money-icon1.png" height="50" width="60"><br>Double Lemonade Stand Income</button>
+        <h4 id="fasterStand">Cost: $2500</h4>
+        <button id="increaseStandSpeed"><img src="https://uxwing.com/wp-content/themes/uxwing/download/07-web-app-development/speed.png" height="50" width="60"><br>Faster Stand</button>
     </div>
 </div>
 <script>
     let cashAmount = 0;
     let increment = 1;
-    let standIncrement = 5;
+    let printerIncrement = 5;
+    let standIncrement = 10;
     let printerAmount = 0;
     let printerCost = 50;
     let printerSpeed = 10000;
-    let speedCost = 500;
-    let increaseSpeed = 1/2;
-    let increaseCost = 1000;
-    let increaseCash = 2;
-    let income = increment;
+    let increasePrinterSpeedCost = 1000;
+    let increasePrinterSpeed = 1/2;
+    let increasePrinterIncomeCost = 10000;
+    let doublePrinterIncrement = 2;
     let standCost = 100;
     let standAmount = 0;
-    let standSpeed = 10000
+    let standSpeed = 10000;
+    let increaseStandSpeedCost = 2500;
+    let increaseStandSpeed = 1/2;
+    let increaseStandIncomeCost = 20000;
+    let doubleStandIncrement = 2;
+
     const cash = document.getElementById('cash');
-    // const cashTag = document.getElementById('cashMoney');
     const clickButton = document.getElementById('click');
-    const printerButton = document.getElementById('moneyPrinter');
-    const printerCount = document.getElementById('printers');
     const error = document.querySelector('p');
-    const increaseButton = document.getElementById('double');
-    const increaseSpeedButton = document.getElementById('twice');
+
+    const printerSpeedIncreaseButton = document.getElementById('increasePrinterSpeed');
+    const printerIncomeIncreaseButton = document.getElementById('increasePrinterIncome');
+    const printerClickButton = document.getElementById('printerClick');
+    const printerButton = document.getElementById('printer');
+    const printerCount = document.getElementById('printers');
+    const fasterPrinter = document.getElementById('fasterPrinter');
+    const doublePrinter = document.getElementById('doublePrinter');
+
+    const standSpeedIncreaseButton = document.getElementById('increaseStandSpeed');
+    const standIncomeIncreaseButton = document.getElementById('increaseStandIncome');
     const speedText = document.getElementById('speedText');
-    const doubleText = document.getElementById('doubleText');
     const standButton = document.getElementById('stand');
     const standCount = document.getElementById('stands');
     const standClickButton = document.getElementById('standClick');
+    const fasterStand = document.getElementById('fasterStand');
+    const doubleStand = document.getElementById('doubleStand');
+
 
 
 
@@ -89,10 +105,15 @@
         cash.innerHTML = `$${cashAmount}`;
     });
 
+    printerClickButton.addEventListener('click', function(e){
+        cashAmount += printerIncrement;
+        cash.innerHTML = `$${cashAmount}`;
+    });
+
     standClickButton.addEventListener('click', function(e){
         cashAmount += standIncrement;
         cash.innerHTML = `$${cashAmount}`;
-    })
+    });
 
     printerButton.addEventListener('click', function(e){
         if(cashAmount >= printerCost){
@@ -101,7 +122,7 @@
             printerAmount += 1;
             printerCount.innerHTML = `${printerAmount}`;
             setInterval(() => {
-                document.getElementById("click").click();
+                document.getElementById("printerClick").click();
             }, printerSpeed);
             error.classList.add('hidden');
         } else{
@@ -111,30 +132,30 @@
         }
     });
 
-    increaseButton.addEventListener('click', function(e){
-        if(cashAmount >= increaseCost){
-            cashAmount -= increaseCost;
+    printerIncomeIncreaseButton.addEventListener('click', function(e){
+        if(cashAmount >= increasePrinterIncomeCost){
+            cashAmount -= increasePrinterIncomeCost;
             cash.innerHTML = `$${cashAmount}`;
-            increment *= increaseCash;
-            increaseButton.classList.add('hidden');
-            doubleText.classList.add('hidden');
+            printerIncrement *= doublePrinterIncrement;
+            printerIncomeIncreaseButton.classList.add('hidden');
+            doublePrinter.classList.add('hidden');
         } else {
             error.classList.remove('hidden');
-            error.textContent = "You Don't Have Enough Money For Double Income!";
+            error.textContent = "You Don't Have Enough Money For The Double Printer Income Upgrade!";
             return;
         }
     });
 
-    increaseSpeedButton.addEventListener('click', function(e){
-        if(cashAmount >= speedCost){
-            cashAmount -= speedCost;
+    printerSpeedIncreaseButton.addEventListener('click', function(e){
+        if(cashAmount >= increasePrinterSpeedCost){
+            cashAmount -= increasePrinterSpeedCost;
             cash.innerHTML = `$${cashAmount}`;
-            printerSpeed *= increaseSpeed;
-            increaseSpeedButton.classList.add('hidden');
-            speedText.classList.add('hidden');
+            printerSpeed *= increasePrinterSpeed;
+            printerSpeedIncreaseButton.classList.add('hidden');
+            fasterPrinter.classList.add('hidden');
         } else {
             error.classList.remove('hidden');
-            error.textContent = "You Don't Have Enough Money For Double Efficiency!";
+            error.textContent = "You Don't Have Enough Money For The Faster Printer Upgrade!";
             return;
         }
     });
@@ -153,6 +174,33 @@
             error.classList.remove('hidden');
             error.textContent = "You Don't Have Enough Money For A Lemonade Stand!";
             return;
+        }
+    });
+
+    standIncomeIncreaseButton.addEventListener('click', function(e){
+        if(cashAmount >= increaseStandIncomeCost){
+            cashAmount -= increaseStandIncomeCost;
+            cash.innerHTML = `$${cashAmount}`;
+            standIncrement *= doubleStandIncrement;
+            standIncomeIncreaseButton.classList.add('hidden');
+            doubleStand.classList.add('hidden');
+        } else {
+            error.classList.remove('hidden');
+            error.textContent = "You don't Have Enough Money For The Double Lemonade Stand Income Upgrade!";
+            return;
+        }
+    });
+
+    standSpeedIncreaseButton.addEventListener('click', function(e){
+        if(cashAmount >= increaseStandSpeedCost){
+            cashAmount -= increaseStandSpeedCost;
+            cash.innerHTML = `$${cashAmount}`;
+            standSpeed *= increaseStandSpeed;
+            standSpeedIncreaseButton.classList.add('hidden');
+            fasterStand.classList.add('hidden');
+        } else {
+            error.classList.remove('hidden');
+            error.textContent = "You Don't Have Enough Money For The Faster Stand Upgrade!";
         }
     })
 </script>
