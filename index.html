@@ -15,6 +15,7 @@
     <div class="content">
         <div class="row">
             <h1>Money Printer</h1>
+            <button id="patchNotes" class="patchNotes">Update Notes</button>
         </div>
         <div class="row">
             <h3>Cash:</h3>
@@ -24,19 +25,25 @@
         <button id="printerClick" class="hidden"></button>
         <button id="standClick" class="hidden"></button>
         <div class="row">
-            <h2>Business</h2>
+            <h2>Businesses</h2>
         </div>
         <div class="row">
             <p class="hidden"></p>
         </div>
-        <h4>Printer Cost: $50</h4>
+        <div class="row">
+            <h4>Money Printer:</h4>
+            <h4 id="relativePrinterCost">$50</h4>
+        </div>
         <br>
         <button id="printer"><img src="https://cdn3.iconfinder.com/data/icons/unigrid-phantom-finance-vol-2/60/014_100_money_print_printer_frs_lifehack_seigniorage_dollar-512.png" height="50" width="60"><br>Buy Printer</button>
         <div class="row">
             <h3>Money Printer Count:</h3>
             <h3 id="printers">0</h3>
         </div>
-        <h4>Lemonade Stand: $100</h4>
+        <div class="row">
+            <h3>Lemonade Stand:</h3>
+            <h3 id="relativeStandCost">$100</h3>
+        </div>
         <br>
         <button id="stand"><img src="https://static.vecteezy.com/system/resources/previews/001/201/307/non_2x/lemonade-stand-png.png" height="50" width="60"><br>Buy<br>Lemonade Stand</button>
         <div class="row">
@@ -79,6 +86,8 @@
     const cash = document.getElementById('cash');
     const clickButton = document.getElementById('click');
     const error = document.querySelector('p');
+    const relativePrinterCost = document.getElementById('relativePrinterCost');
+    const relativeStandCost = document.getElementById('relativeStandCost');
 
     const printerSpeedIncreaseButton = document.getElementById('increasePrinterSpeed');
     const printerIncomeIncreaseButton = document.getElementById('increasePrinterIncome');
@@ -90,15 +99,11 @@
 
     const standSpeedIncreaseButton = document.getElementById('increaseStandSpeed');
     const standIncomeIncreaseButton = document.getElementById('increaseStandIncome');
-    const speedText = document.getElementById('speedText');
     const standButton = document.getElementById('stand');
     const standCount = document.getElementById('stands');
     const standClickButton = document.getElementById('standClick');
     const fasterStand = document.getElementById('fasterStand');
     const doubleStand = document.getElementById('doubleStand');
-
-
-
 
     clickButton.addEventListener('click', function(e){
         cashAmount += increment;
@@ -129,6 +134,10 @@
             error.classList.remove('hidden');
             error.textContent = "You Don't Have Enough Money For A Money Printer!";
             return;
+        }
+        if(printerAmount >= 1){
+            printerCost *= 1.25;
+            relativePrinterCost.innerHTML = `$${printerCost}`;
         }
     });
 
@@ -174,6 +183,10 @@
             error.classList.remove('hidden');
             error.textContent = "You Don't Have Enough Money For A Lemonade Stand!";
             return;
+        }
+        if(standAmount >= 1){
+            standCost *= 1.25;
+            relativeStandCost.innerHTML = `$${standCost}`
         }
     });
 
