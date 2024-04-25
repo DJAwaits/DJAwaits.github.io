@@ -31,7 +31,8 @@ async function run() {
         await client.connect();
         // Send a ping to confirm a successful connection
         const bookCollections = client.db("BookCollection").collection("books");
-
+        const movieCollections = client.db("MovieCollection").collection("movies");
+        const animangaCollections = client.db("AnimangaCollection").collection("animangas");
 
         // insert a book to db: Post Method
         app.post("/upload-book", async (req, res) => {
@@ -93,6 +94,128 @@ async function run() {
             const result = await bookCollections.findOne(filter);
             res.send(result)
         })
+
+        app.post("/upload-movie", async (req, res) => {
+            const data = req.body;
+            // console.log(data);
+            const result = await movieCollections.insertOne(data);
+            res.send(result);
+        })
+
+        // // get all movie from db
+         app.get("/all-movie", async (req, res) => {
+             const movies = movieCollections.find();
+             const result = await movies.toArray();
+             res.send(result)
+         })
+
+        // get all movie & find by a category from db
+        app.get("/all-movie", async (req, res) => {
+            let query = {};
+            if (req.query?.category) {
+                query = { category: req.query.category }
+            }
+            const result = await movieCollections.find(query).toArray();
+            res.send(result)
+        })
+
+        // update a movie method
+        app.patch("/movie/:id", async (req, res) => {
+            const id = req.params.id;
+            // console.log(id);
+            const updateMovieData = req.body;
+            const filter = { _id: new ObjectId(id) };
+            const updatedDoc = {
+                $set: {
+                    ...updateMovieData
+                }
+            }
+            const options = { upsert: true };
+
+            // update now
+            const result = await movieCollections.updateOne(filter, updatedDoc, options);
+            res.send(result);
+        })
+
+
+        // delete a item from db
+        app.delete("/movie/:id", async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: new ObjectId(id) };
+            const result = await movieCollections.deleteOne(filter);
+            res.send(result);
+        })
+
+
+        // get a single movie data
+        app.get("/movie/:id", async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: new ObjectId(id) };
+            const result = await movieCollections.findOne(filter);
+            res.send(result)
+        })
+
+        app.post("/upload-animanga", async (req, res) => {
+            const data = req.body;
+            // console.log(data);
+            const result = await animangaCollections.insertOne(data);
+            res.send(result);
+        })
+
+        // // get all movie from db
+         app.get("/all-animanga", async (req, res) => {
+             const animangas = animangaCollections.find();
+             const result = await animangas.toArray();
+             res.send(result)
+         })
+
+        // get all movie & find by a category from db
+        app.get("/all-animanga", async (req, res) => {
+            let query = {};
+            if (req.query?.category) {
+                query = { category: req.query.category }
+            }
+            const result = await animangaCollections.find(query).toArray();
+            res.send(result)
+        })
+
+        // update a movie method
+        app.patch("/animanga/:id", async (req, res) => {
+            const id = req.params.id;
+            // console.log(id);
+            const updateAnimangaData = req.body;
+            const filter = { _id: new ObjectId(id) };
+            const updatedDoc = {
+                $set: {
+                    ...updateAnimangaData
+                }
+            }
+            const options = { upsert: true };
+
+            // update now
+            const result = await animangaCollections.updateOne(filter, updatedDoc, options);
+            res.send(result);
+        })
+
+
+        // delete a item from db
+        app.delete("/animanga/:id", async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: new ObjectId(id) };
+            const result = await animangaCollections.deleteOne(filter);
+            res.send(result);
+        })
+
+
+        // get a single movie data
+        app.get("/animanga/:id", async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: new ObjectId(id) };
+            const result = await animangaCollections.findOne(filter);
+            res.send(result)
+        })
+
+        
 
 
         await client.db("admin").command({ ping: 1 });
