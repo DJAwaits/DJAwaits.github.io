@@ -4,7 +4,7 @@ import {
   } from "react-router-dom";
 import App from '../App';
 import Home from '../home/Home';
-import Test from '../test/Test';
+import AllBooks from '../AllBooks/AllBooks';
 import Blog from '../comp/Blog';
 import About from '../comp/About';
 
@@ -19,8 +19,8 @@ import About from '../comp/About';
             element: <Home/>
         },
         {
-          path: '/test',
-          element: <Test/>
+          path: '/AllBooks',
+          element: <AllBooks/>
 
         },{
           path: '/blog',
