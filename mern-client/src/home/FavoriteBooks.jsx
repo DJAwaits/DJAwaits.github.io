@@ -9,7 +9,7 @@ const FavoriteBooks = () => {
     }, [])
   return (
     <div>
-      <BookCards books={books} headline=""/>
+      
     </div>
   )
 }
