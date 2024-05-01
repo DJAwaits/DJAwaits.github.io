@@ -34,7 +34,7 @@ const Navbar = () => {
         {link: "All Movies", path: "/AllMovies"},
         {link: "All Animanga", path: "/AllAnimanga"},
         {link: "Profile", path: "/admin/dashboard"},
-        {link: "Blog", path: "/blog"},
+        
         
     ]
   return (

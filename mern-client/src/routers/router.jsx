@@ -26,6 +26,7 @@ import EditAnimanga from "../dashboard/EditAnimanga";
 import SignUp from "../comp/SignUp";
 import Login from "../comp/Login";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Logout from "../comp/Logout";
 
 
   const router = createBrowserRouter([
@@ -118,6 +119,9 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
     },{
       path: '/login',
       element: <Login/>
+    },{
+      path: '/logout',
+      element: <Logout/>
     }
   ]);
 
