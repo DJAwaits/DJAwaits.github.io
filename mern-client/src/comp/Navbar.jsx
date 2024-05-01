@@ -30,6 +30,7 @@ const Navbar = () => {
         {link: "All Books", path: "/AllBooks"},
         {link: "All Movies", path: "/AllMovies"},
         {link: "All Animanga", path: "/AllAnimanga"},
+        {link: "Profile", path: "/admin/dashboard"},
         {link: "Blog", path: "/blog"},
         
     ]
@@ -37,8 +38,8 @@ const Navbar = () => {
     <header className='w-full bg-transparent fixed top-0 left-0 right-0 transition-all ease-in duration-300'>
         <nav className={`py-4 lg:px-24 px-4 ${isSticky ? "sticky top-0 left-0 right-0 bg-blue-300": ""}`}>
             <div className='flex justify-between items-center text-base gap-8'>
-                {}
-                <a href="/" className='text-2x1 font-bold text-blue-700 flex items-center gap-2'><FaBlog className='inline-block '/>Books</a>
+                {/* */}
+                <a href="/" className='text-2x1 font-bold text-blue-700 flex items-center gap-2  '><FaBlog className='inline-block '/>Books</a>
 
                 <ul className='md:flex space-x-12 hidden'>
                     {
