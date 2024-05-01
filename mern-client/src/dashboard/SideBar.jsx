@@ -37,7 +37,9 @@ export const SideBar = () => {
           <Sidebar.Item href="#" icon={HiUser}>
             Users
           </Sidebar.Item>
-         
+          <Sidebar.Item href="/sign-up" icon={HiArrowSmRight}>
+            Sign Up
+          </Sidebar.Item>
           <Sidebar.Item href="/login" icon={HiArrowSmRight}>
             Sign In
           </Sidebar.Item>
@@ -46,12 +48,10 @@ export const SideBar = () => {
           </Sidebar.Item>
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiChartPie}>
-            Upgrade to Pro
+          <Sidebar.Item href="/" icon={HiChartPie}>
+            Back Home
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards}>
-            Documentation
-          </Sidebar.Item>
+          
           <Sidebar.Item href="#" icon={HiSupport}>
             Help
           </Sidebar.Item>

@@ -29,7 +29,7 @@ const AllAnimanga = () => {
                 {animanga.description}
                 </p>
               </p>
-  
+              
               <button className='bg-blue-700 font-semibold text-white py-2 rounded'>More</button>
   
             </Card>)

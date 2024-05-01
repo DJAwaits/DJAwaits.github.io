@@ -23,6 +23,9 @@ import ManageAnimanga from "../dashboard/ManageAnimanga";
 import EditBook from "../dashboard/EditBook";
 import EditMovie from "../dashboard/EditMovie";
 import EditAnimanga from "../dashboard/EditAnimanga";
+import SignUp from "../comp/SignUp";
+import Login from "../comp/Login";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
   const router = createBrowserRouter([
@@ -65,50 +68,57 @@ import EditAnimanga from "../dashboard/EditAnimanga";
           path: '/animanga/:id',
           element: <SingleAnimanga/>,
           loader: ({params}) => fetch(`http://localhost:5000/animanga/${params.id}`)
-        },{
-          path: '/admin/dashboard/',
-          element: <DashboardLayout/>,
-          children: [
-            {
-              path: '/admin/dashboard/',
-              element: <Dashboard/>
-            },{
-              path: '/admin/dashboard/UploadBook',
-              element: <UploadBook/>
-            },{
-              path: '/admin/dashboard/UploadMovie',
-              element: <UploadMovie/>
-            },{
-              path: '/admin/dashboard/UploadAnimanga',
-              element: <UploadAnimanga/>
-            },{
-              path: '/admin/dashboard/manageBook',
-              element: <ManageBook/>
-            },{
-              path: '/admin/dashboard/manageMovie',
-              element: <ManageMovie/>
-            },{
-              path: '/admin/dashboard/manageAnimanga',
-              element: <ManageAnimanga/>
-            },{
-              path: '/admin/dashboard/editBook:id',
-              element: <EditBook/>,
-              loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`)
-            },{
-              path: '/admin/dashboard/editMovie:id',
-              element: <EditMovie/>,
-              loader: ({params}) => fetch(`http://localhost:5000/movie/${params.id}`)
-            },{
-              path: '/admin/dashboard/editAnimanga:id',
-              element: <EditAnimanga/>,
-              loader: ({params}) => fetch(`http://localhost:5000/animanga/${params.id}`)
-            }
-
-          ]
         }
         
       ]
-    },
+    },,{
+      path: '/admin/dashboard/',
+      element: <DashboardLayout/>,
+      children: [
+        {
+          path: '/admin/dashboard/',
+          element: <PrivateRoute><Dashboard/></PrivateRoute>
+        },{
+          path: '/admin/dashboard/UploadBook',
+          element: <UploadBook/>
+        },{
+          path: '/admin/dashboard/UploadMovie',
+          element: <UploadMovie/>
+        },{
+          path: '/admin/dashboard/UploadAnimanga',
+          element: <UploadAnimanga/>
+        },{
+          path: '/admin/dashboard/manageBook',
+          element: <ManageBook/>
+        },{
+          path: '/admin/dashboard/manageMovie',
+          element: <ManageMovie/>
+        },{
+          path: '/admin/dashboard/manageAnimanga',
+          element: <ManageAnimanga/>
+        },{
+          path: '/admin/dashboard/editBook:id',
+          element: <EditBook/>,
+          loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`)
+        },{
+          path: '/admin/dashboard/editMovie:id',
+          element: <EditMovie/>,
+          loader: ({params}) => fetch(`http://localhost:5000/movie/${params.id}`)
+        },{
+          path: '/admin/dashboard/editAnimanga:id',
+          element: <EditAnimanga/>,
+          loader: ({params}) => fetch(`http://localhost:5000/animanga/${params.id}`)
+        }
+
+      ]
+    }
+    ,{
+      path: '/sign-up',
+      element: <SignUp/>
+    },{
+      path: '/login',
+      element: <Login/>
+    }
   ]);
 
   export default router;

@@ -31,7 +31,7 @@ const EditAnimanga = () => {
     // send data to db
 
     fetch("http://localhost:5000/animanga:id", {
-        method: "PATCh",
+        method: "PATCH",
         headers: {
             "Content-type": "application/json",
         },
