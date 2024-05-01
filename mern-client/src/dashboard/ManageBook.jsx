@@ -49,18 +49,18 @@ const ManageBook = () => {
                             {index + 1}
                         </Table.Cell>        
                         <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                            {book.bookTitle}
+                            {book.title}
                         </Table.Cell>
                         <Table.Cell>
-                            {book.authorName}
+                            {book.authors}
                         </Table.Cell>
                         <Table.Cell>
-                            {book.category}
+                            {book.categories}
                         </Table.Cell>
                         <Table.Cell>
                             <Link
                                 className="font-medium text-cyan-600 hover:underline dark:text-cyan-500 mr-5"
-                                to={`/admin/dashboard/edit-books/${book._id}`}
+                                to={`/admin/dashboard/editBook/${book._id}`}
                             >    
                                 Edit 
                             </Link>  
