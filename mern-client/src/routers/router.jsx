@@ -7,6 +7,8 @@ import Home from '../home/Home';
 import AllBooks from '../AllBooks/AllBooks';
 import Blog from '../comp/Blog';
 import About from '../comp/About';
+import AllAnimanga from "../AllAnimanga/AllAnimanga";
+import AllMovies from "../AllMovies/AllMovies";
 
 
   const router = createBrowserRouter([
@@ -22,7 +24,16 @@ import About from '../comp/About';
           path: '/AllBooks',
           element: <AllBooks/>
 
-        },{
+        },
+        {
+          path: '/AllMovies',
+          element: <AllMovies/>
+        },
+        {
+          path: '/AllAnimanga',
+          element: <AllAnimanga/>
+        },
+        {
           path: '/blog',
           element: <Blog/>
         },{
