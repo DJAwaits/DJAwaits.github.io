@@ -8,9 +8,9 @@ export default {
       colors: {
         'celestial-blue': '#449dd1',
         'sky-blue': '#78c0e0',
-        'Gunmetal': '#293040',
-        'Tan': 'c9ad8b',
-        'Gold': 'd5b263',
+        'gunmetal': '#293040',
+        'tan': '#c9ad8b',
+        'gold': '#d5b263',
       }
     },
   },
