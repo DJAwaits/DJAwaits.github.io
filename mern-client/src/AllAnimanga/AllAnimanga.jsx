@@ -30,8 +30,9 @@ const AllAnimanga = () => {
                 </p>
               </p>
               
-              <button className='bg-gunmetal font-semibold text-white py-2 rounded'>More</button>
-  
+              <a href={'/animanga/' + `${animanga._id}`}>
+              {<button className='bg-gunmetal font-semibold text-white py-2 rounded'>More</button>}
+              </a>
             </Card>)
           }
         </div>

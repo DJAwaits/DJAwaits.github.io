@@ -30,7 +30,9 @@ const AllMovies = () => {
               </p>
             </p>
 
-            <button className='bg-gunmetal font-semibold text-white py-2 rounded'>More</button>
+            <a href={'/movie/' + `${movie._id}`}>
+              {<button className='bg-gunmetal font-semibold text-white py-2 rounded'>More</button>}
+              </a>
 
           </Card>)
         }
