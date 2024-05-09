@@ -7,8 +7,11 @@ const SingleBook = () => {
     <div className='mt-28 px-4 lg:px-24 flex display:flex bg-sky-blue'>
         <img src={thumbnail} alt="" className='h-96 m-2.5'/>
       <div className='m-2.5'>
-        <h2 className='m-2.5 font-bold text-4xl'>{title}</h2>
-        <p className='m-2.5 mt-8'>{description}</p>
+        <h2 className='m-2.5 font-bold text-4xl border-b-2 border-gunmetal pb-1'>{title}</h2>
+        <h2 className='m-2.5 mt-6 text-xl'>Description:</h2>
+        <p className='m-2.5 mt-2 border-2 rounded p-2 border-gunmetal'>{description}</p>
+        <h2 className='m-2.5 mt-6 text-xl'>Additional Information:</h2>
+        <p className='m-2.5 mt-2 border-2 rounded p-2 border-gunmetal'>{published_year} {num_pages}</p>
       </div>
       
     </div>
