@@ -25,7 +25,7 @@ export const SideBar = () => {
           <Sidebar.Item href="/admin/dashboard/uploadAnimanga" icon={HiOutlineCloudUpload}>
             Upload Animanga
           </Sidebar.Item>
-          <Sidebar.Item href="/admin/dashboard/manageBook" icon={HiInbox}>
+          {/*<Sidebar.Item href="/admin/dashboard/manageBook" icon={HiInbox}>
             Manage Book
           </Sidebar.Item>
           <Sidebar.Item href="/admin/dashboard/manageMovie" icon={HiInbox}>
@@ -33,7 +33,7 @@ export const SideBar = () => {
           </Sidebar.Item>
           <Sidebar.Item href="/admin/dashboard/manageAnimanga" icon={HiInbox}>
             Manage Animanga
-          </Sidebar.Item>
+    </Sidebar.Item>*/}
           <Sidebar.Item href="#" icon={HiUser}>
             Users
           </Sidebar.Item>

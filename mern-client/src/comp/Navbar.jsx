@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { FaBarsStaggered, FaBlog, FaXmark } from "react-icons/fa6";
 import { AuthContext } from '../contents/AuthProvider';
+import logo from '../assets/liburi-high-resolution-logo.png';
+
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
@@ -29,7 +31,7 @@ const Navbar = () => {
 
     const navItems = [
         {link: "Home", path: "/"},
-        {link: "About", path: "/about"},
+        //{link: "About", path: "/about"},
         {link: "All Books", path: "/AllBooks"},
         {link: "All Movies", path: "/AllMovies"},
         {link: "All Animanga", path: "/AllAnimanga"},
@@ -38,11 +40,13 @@ const Navbar = () => {
         
     ]
   return (
-    <header className='w-full bg-transparent fixed top-0 left-0 right-0 transition-all ease-in duration-300'>
-        <nav className={`py-4 lg:px-24 px-4 ${isSticky ? "sticky top-0 left-0 right-0 bg-blue-300": ""}`}>
+    <header className='w-full bg-tan fixed top-0 left-0 right-0 transition-all ease-in duration-300'>
+        <nav className={`py-4 lg:px-24 px-4 ${isSticky ? "sticky top-0 left-0 right-0 bg-tan": ""}`}>
             <div className='flex justify-between items-center text-base gap-8'>
                 {/* */}
-                <a href="/" className='text-2x1 font-bold text-blue-700 flex items-center gap-2  '><FaBlog className='inline-block '/>Books</a>
+                <a href="/" className="text-2x1 font-bold text-blue-700 flex items-center gap-2">
+                    <img className='h-16 w-30 rounded-lg' src={logo} alt="logo"/>
+                    </a>
 
                 <ul className='md:flex space-x-12 hidden'>
                     {
